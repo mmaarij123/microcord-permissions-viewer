@@ -1,30 +1,52 @@
 # Permissions Viewer for Microcord
 
-A read-only Android plugin that uses Microcord's plugin API to inspect Discord permissions. The [Microcord plugin template](https://github.com/microcord/plugin-template) documents the Android integration, and [Vencord’s Permissions Viewer](https://github.com/Vendicated/Vencord/tree/main/src/plugins/permissionsViewer) by Nuckyz and Vendicated inspired the feature.
+A read-only plugin for Microcord on Android. See which permissions a server role has, where a member gets their permissions, and what a channel explicitly allows or denies.
 
-## Install and use
+## What you can view
 
-1. Download the APK from [Releases](https://github.com/mmaarij123/microcord-permissions-viewer/releases) and install it on the device running Microcord. With ADB, use `adb install -r PermissionsViewer-debug.apk`.
-2. Open **Microcord → Settings → Plugins**. Select **Permissions Viewer**, approve its signer when prompted, and enable it.
-3. Long-press a server, channel, or thread and choose **View Permissions**. For a member, use the actions menu or the **View Permissions** button on their server profile.
+- **Server roles** show which permissions are granted or unset for each role.
+- **Members** show server-level permissions and where each grant comes from, including `@everyone`, Administrator roles, and server ownership. Switch the attribution between the highest and lowest granting role. The plugin remembers your choice.
+- **Channels and threads** show explicit allows and denies for individual roles and members. Threads display the overwrites from their parent channel.
 
-Version 1.0.2 installs as the Android package `io.github.mmaarij123.permissionsviewer`. If you installed v1.0.1, disable that copy in Microcord before enabling v1.0.2.
+## Download and install
 
-The server view lists the permissions configured on each role. The member summary shows server-level grants, including `@everyone`, Administrator, and server ownership. Select a role for its individual settings. The attribution button switches between the highest and lowest granting role and saves that preference.
+1. Open the [latest GitHub release](https://github.com/mmaarij123/microcord-permissions-viewer/releases/latest) and download **PermissionsViewer-debug.apk** under **Assets**. You can also [download the APK directly](https://github.com/mmaarij123/microcord-permissions-viewer/releases/latest/download/PermissionsViewer-debug.apk).
+2. Open the downloaded APK on the Android device that runs Microcord and install it.
+3. In **Microcord → Settings → Plugins**, select **Permissions Viewer**, approve the signer if prompted, and enable the plugin.
 
-The channel view shows explicit role and member overwrites. Threads display the overwrites inherited from their parent channel. The viewer uses Microcord's local store snapshots and displays an ID when an overwrite target's name is unavailable.
+If you installed v1.0.1, disable that copy in Microcord before enabling the new one. Android installs v1.0.2 as a separate app.
 
-The viewer uses the typefaces configured by Microcord's active theme. The stock theme uses Whitney for body text and controls.
+## Open the viewer
 
-## Build from source
+- Long-press a server, channel, or thread and choose **View Permissions**.
+- For a member, choose **View Permissions** from their actions menu or server profile.
+- Use the dropdown to inspect an individual role or overwrite. The details screen also lets you copy the selected target's ID.
 
-Use JDK 21 and Android SDK Platform 36.1. Set `ANDROID_HOME` to your Android SDK directory or configure `sdk.dir` in `local.properties`.
+## Technical details
+
+The plugin is written in Kotlin and uses Microcord's plugin API 1.0.6 to register its menus and profile button. It reads server roles, members, and channel overwrites from Microcord's local stores. If an overwrite target's name is unavailable, the viewer displays its ID. The UI uses the active Microcord theme's fonts.
+
+The Android application ID is `io.github.mmaarij123.permissionsviewer`. Microcord discovers the APK through its manifest and loads the entry point under plugin ID `manticord.permissionsviewer`.
+
+The Android integration follows the [Microcord plugin template](https://github.com/microcord/plugin-template). The feature was inspired by [Vencord’s Permissions Viewer](https://github.com/Vendicated/Vencord/tree/main/src/plugins/permissionsViewer) by Nuckyz and Vendicated.
+
+### Build from source
+
+Clone this repository and install JDK 21 and Android SDK Platform 36.1. Set `ANDROID_HOME` to your SDK directory or set `sdk.dir` in `local.properties`.
+
+**Windows**
 
 ```powershell
 .\gradlew.bat assembleDebug
 ```
 
-On macOS and Linux, run `./gradlew assembleDebug`. Gradle writes the APK to `build/outputs/apk/debug/`. The project uses Microcord's published plugin API 1.0.6. A sibling checkout named `manticordrebuild` can supply the local Gradle plugin and SDK JAR.
+**macOS or Linux**
+
+```sh
+./gradlew assembleDebug
+```
+
+Gradle writes the debug APK to `build/outputs/apk/debug/`. It uses Microcord's published plugin SDK by default. A sibling checkout named `manticordrebuild` can supply the local Gradle plugin and SDK JAR.
 
 ## License
 
