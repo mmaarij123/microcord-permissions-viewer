@@ -8,6 +8,8 @@ A read-only Android plugin that uses Microcord's plugin API to inspect Discord p
 2. Open **Microcord → Settings → Plugins**. Select **Permissions Viewer**, approve its signer when prompted, and enable it.
 3. Long-press a server, channel, or thread and choose **View Permissions**. For a member, use the actions menu or the **View Permissions** button on their server profile.
 
+Version 1.0.2 installs as the Android package `io.github.mmaarij123.permissionsviewer`. If you installed v1.0.1, disable that copy in Microcord before enabling v1.0.2.
+
 The server view lists the permissions configured on each role. The member summary shows server-level grants, including `@everyone`, Administrator, and server ownership. Select a role for its individual settings. The attribution button switches between the highest and lowest granting role and saves that preference.
 
 The channel view shows explicit role and member overwrites. Threads display the overwrites inherited from their parent channel. The viewer uses Microcord's local store snapshots and displays an ID when an overwrite target's name is unavailable.

@@ -1,4 +1,4 @@
-package dev.mantikafasi.manticord.permissionsviewer
+package io.github.mmaarij123.permissionsviewer
 
 import com.discord.api.permission.Permission
 

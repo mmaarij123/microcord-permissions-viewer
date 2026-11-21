@@ -5,7 +5,7 @@ plugins {
     id("dev.mantikafasi.manticord.plugin") version "1.0.0"
 }
 
-val pluginPackage = "dev.mantikafasi.manticord.permissionsviewer"
+val pluginPackage = "io.github.mmaarij123.permissionsviewer"
 
 manticordPlugin {
     id.set("manticord.permissionsviewer")
@@ -26,8 +26,8 @@ android {
         applicationId = pluginPackage
         minSdk = 23
         targetSdk = 36
-        versionCode = 2
-        versionName = "1.0.1"
+        versionCode = 3
+        versionName = "1.0.2"
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11

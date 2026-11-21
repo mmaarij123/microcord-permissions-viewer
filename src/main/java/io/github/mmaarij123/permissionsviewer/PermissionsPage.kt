@@ -1,4 +1,4 @@
-package dev.mantikafasi.manticord.permissionsviewer
+package io.github.mmaarij123.permissionsviewer
 
 import android.content.ClipData
 import android.content.ClipboardManager
