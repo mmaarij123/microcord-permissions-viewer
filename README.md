@@ -50,4 +50,6 @@ Gradle writes the debug APK to `build/outputs/apk/debug/`. It uses Microcord's p
 
 ## License
 
-Permissions Viewer is available under the [MIT License](LICENSE). The Gradle Wrapper is distributed under [Apache License 2.0](gradle/wrapper/LICENSE).
+The original Android Permissions Viewer implementation is licensed under MIT. Copyright © 2026 Maarij. You may use, copy, modify, and redistribute the code, including for commercial use. Include the copyright notice and permission notice with copies or substantial portions of the code. The code is provided as is, without warranty. The full terms include a limitation of liability. [Read the MIT license](LICENSE)
+
+The APK includes a copy of the MIT license. See the notices for the Vencord credit and the Gradle Wrapper license. [Third-party notices](THIRD_PARTY_NOTICES.md)
